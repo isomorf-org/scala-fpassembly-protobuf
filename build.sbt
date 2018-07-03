@@ -63,9 +63,6 @@ EclipseKeys.withSource := true
     pushChanges
   )
 
-
-publishTo := Some(Resolver.file("Unused transient repository", file("target/unusedrepo")))
-
 commands += Command.command("releaser") {
   "release cross" :: 
   //s"sonatypeReleaseAll ${organizationGlobal}" ::
