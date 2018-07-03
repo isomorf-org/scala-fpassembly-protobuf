@@ -118,3 +118,5 @@ downloadProtobufSchemas := {
   })
 }
 
+(Compile / compile) := ((Compile / compile) dependsOn downloadProtobufSchemas).value
+
