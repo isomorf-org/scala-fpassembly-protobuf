@@ -8,9 +8,9 @@
 ![Maven Central](https://img.shields.io/maven-central/v/org.fpassembly/fpassembly-protobuf_2.12.svg?style=for-the-badge)
 
 ```scala
-libraryDependencies += "org.fpassembly" %% "fpassembly-protobuf" % "0.1.0"
+libraryDependencies += "org.fpassembly" %% "fpassembly-protobuf" % "@VERSION@"
 ```
 
 ## Documentation
 
-[scaladocs](http://isomorf-org.github.io/scala-fpassembly-protobuf/scaladocs/api/0.1.0)
+[scaladocs](http://isomorf-org.github.io/scala-fpassembly-protobuf/scaladocs/api/@VERSION@)
