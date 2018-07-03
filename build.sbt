@@ -11,6 +11,8 @@ name         := "fpassembly-protobuf"
 
 scalaVersion := "2.12.3"
 
+crossScalaVersions := Seq("2.11.12", scalaVersion.value)
+
 scalacOptions := Seq("-feature", "-unchecked", "-deprecation", "-encoding", "utf8", "-Xlint:_", "-Ywarn-unused-import")
   
 EclipseKeys.useProjectId := true
@@ -42,6 +44,7 @@ EclipseKeys.withSource := true
     }
   )
   
+  releaseCrossBuild := true
   
   releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
@@ -53,11 +56,11 @@ EclipseKeys.withSource := true
     setReleaseVersion,
     commitReleaseVersion,
     tagRelease,
-    releaseStepCommand("publishSigned"),
+    releaseStepCommandAndRemaining("+publishArtifacts"),
     releaseStepCommand("makeDocs"),
     setNextVersion,
     commitNextVersion,
-    releaseStepCommand(s"sonatypeReleaseAll org.fpassembly"),
+    releaseStepCommand(s"sonatypeReleaseAll " + organization.value),
     pushChanges
   )
 
