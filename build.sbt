@@ -56,7 +56,7 @@ EclipseKeys.withSource := true
     setReleaseVersion,
     commitReleaseVersion,
     tagRelease,
-    releaseStepCommandAndRemaining("+publishArtifacts"),
+    releaseStepCommandAndRemaining("+publishArtifact"),
     releaseStepCommand("makeDocs"),
     setNextVersion,
     commitNextVersion,
