@@ -4,7 +4,7 @@ import com.typesafe.sbt.pgp.PgpKeys.publishSigned
 import ReleaseTransformations._
 
 lazy val `fpassembly-protobuf` = project in file(".")
-    
+
 organization := "org.fpassembly"
 
 name         := "fpassembly-protobuf"
@@ -14,11 +14,11 @@ scalaVersion := "2.12.3"
 crossScalaVersions := Seq("2.11.12", scalaVersion.value)
 
 scalacOptions := Seq("-feature", "-unchecked", "-deprecation", "-encoding", "utf8", "-Xlint:_", "-Ywarn-unused-import")
-  
+
 EclipseKeys.useProjectId := true
 
 EclipseKeys.withSource := true
-  
+
 
 //useGpg := true,
   homepage   := Some(url("https://github.com/isomorf-org/scala-fpassembly-protobuf"))
@@ -33,7 +33,7 @@ EclipseKeys.withSource := true
   pomIncludeRepository := { _ => false }
 
   publishMavenStyle := true
-  
+
   // Add sonatype repository settings
   publishTo := Some(
     if (isSnapshot.value) {
@@ -43,9 +43,9 @@ EclipseKeys.withSource := true
       Opts.resolver.sonatypeStaging
     }
   )
-  
+
   releaseCrossBuild := true
-  
+
   releasePublishArtifactsAction := PgpKeys.publishSigned.value
 
   releaseProcess := Seq[ReleaseStep](
@@ -64,7 +64,7 @@ EclipseKeys.withSource := true
   )
 
 commands += Command.command("releaser") {
-  "release cross" :: 
+  "release cross" ::
   //s"sonatypeReleaseAll ${organizationGlobal}" ::
    _
 }
@@ -91,7 +91,7 @@ PB.targets in Compile := Seq(
 
 PB.protoSources in Compile ++= Seq(target.value / "external-schemas" / "protobuf")
 
-val schemaVersions = Seq("1")
+val schemaVersions = Seq("1", "2")
 
 val downloadProtobufSchemas = taskKey[Unit]("download protobuf schemas")
 
@@ -115,4 +115,3 @@ downloadProtobufSchemas := {
 }
 
 (Compile / compile) := ((Compile / compile) dependsOn downloadProtobufSchemas).value
-
